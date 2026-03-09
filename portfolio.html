@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2Venus — Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #111;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAV */
+    nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: #666;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #111;
+    }
+
+    /* MAIN LAYOUT */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .container {
+      display: flex;
+      gap: 64px;
+      align-items: flex-start;
+    }
+
+    .sidebar {
+      flex: 0 0 300px;
+      position: sticky;
+      top: 32px;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    /* HERO & SIDEBAR */
+    .hero {
+      padding-bottom: 48px;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 48px;
+    }
+
+    .hero-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 24px;
+      object-fit: cover;
+      border: 1px solid #eee;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 9px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-dark {
+      background: #111;
+      color: #fff;
+      border: 1px solid #111;
+    }
+
+    .btn-dark:hover {
+      background: #333;
+    }
+
+    .btn-light {
+      background: #fff;
+      color: #111;
+      border: 1px solid #ddd;
+    }
+
+    .btn-light:hover {
+      border-color: #999;
+    }
+
+    /* SECTION */
+    section {
+      padding: 48px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    section:first-child {
+      padding-top: 0;
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #999;
+      margin-bottom: 24px;
+    }
+
+    /* ABOUT IN SIDEBAR */
+    .about-sidebar {
+      margin-bottom: 48px;
+    }
+
+    .about-sidebar p {
+      color: #444;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    /* SKILLS */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill {
+      padding: 6px 14px;
+      border: 1px solid #e5e5e5;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #444;
+      background: #fafafa;
+    }
+
+    /* PROJECTS */
+    .project-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .project-item:first-child {
+      padding-top: 0;
+    }
+
+    .project-item:last-child {
+      border-bottom: none;
+    }
+
+    .project-left {
+      flex: 1;
+    }
+
+    .project-title {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .project-summary {
+      margin-bottom: 32px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      background: #f3f3f3;
+      color: #555;
+      border-radius: 4px;
+    }
+
+    .project-link {
+      font-size: 13px;
+      color: #999;
+      white-space: nowrap;
+      margin-left: 24px;
+      margin-top: 2px;
+      transition: color 0.2s;
+    }
+
+    .project-link:hover {
+      color: #111;
+    }
+
+    /* EXPERIENCE */
+    .exp-item {
+      padding: 20px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .exp-date {
+      font-size: 13px;
+      color: #999;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .exp-desc {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* CONTACT IN SIDEBAR */
+    .contact-sidebar .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .contact-sidebar .contact-row:last-child {
+      border-bottom: none;
+    }
+
+    .contact-label {
+      font-size: 13px;
+      color: #999;
+    }
+
+    .contact-val {
+      font-size: 13px;
+      color: #111;
+      transition: color 0.2s;
+    }
+
+    .contact-val:hover {
+      color: #666;
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px;
+      font-size: 12px;
+      color: #bbb;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #eee;
+    }
+
+    @media (max-width: 850px) {
+      .container {
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      .sidebar {
+        flex: none;
+        width: 100%;
+        position: static;
+      }
+
+      nav,
+      main,
+      footer {
+        max-width: 600px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .project-item {
+        flex-direction: column;
+      }
+
+      .project-link {
+        margin-left: 0;
+        margin-top: 8px;
+      }
+
+      .exp-header {
+        flex-direction: column;
+        gap: 2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">Nguyen Hoang Luan</div>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <!-- LEFT COLUMN: AVATAR & INFO -->
+      <aside class="sidebar">
+        <div class="hero">
+            <img src="./avatar.jpg" style="scale: 1.25;" alt="2Venus Avatar" class="hero-avatar">
+          <h1>Backend Developer</h1>
+          <p>I build robust backend systems and developer tools. Focused on clean code, good architecture, and shipping
+            things that work.</p>
+          <div class="hero-links">
+            <a href="#contact" class="btn btn-dark">Get in touch</a>
+            <a href="https://github.com/Venus2Mice" target="_blank" class="btn btn-light">GitHub ↗</a>
+            <a href="./resume.pdf" target="_blank" class="btn btn-light">Resume ↗</a>
+          </div>
+        </div>
+
+        <div class="about-sidebar">
+          <h2>About</h2>
+          <p>Passionate Backend Developer with experience in building web applications using modern technologies like
+            TypeScript, React, and Java.</p>
+          <p>Currently focused on exploring UI/UX design, automated testing, and backend development with Spring Boot.
+            Based in Vietnam.</p>
+        </div>
+
+        <div class="about-sidebar">
+          <h2>Hobbies</h2>
+          <p>• Coding & Open Source</p>
+          <p>• Tech Blogs & Podcasts</p>
+          <p>• Gaming (League of Legends, etc.)</p>
+          <p>• Coffee & Travel</p>
+        </div>
+
+        <div id="contact" class="contact-sidebar">
+          <h2>Contact</h2>
+          <div class="contact-row">
+            <span class="contact-label">Email</span>
+            <a href="mailto:cfdluan@example.com" class="contact-val">Email ↗</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">GitHub</span>
+            <a href="https://github.com/Venus2Mice" class="contact-val">GitHub ↗</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Resume</span>
+            <a href="./resume.pdf" class="contact-val">View Resume ↗</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">LinkedIn</span>
+            <a href="#" class="contact-val">LinkedIn ↗</a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT COLUMN: PROJECTS, SKILLS, EXPERIENCE -->
+      <div class="content">
+
+        <section>
+          <h2>Skills</h2>
+          <div class="skills-list">
+            <span class="skill">TypeScript</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">Java</span>
+            <span class="skill">Spring Boot</span>
+            <span class="skill">React</span>
+            <span class="skill">HTML/CSS</span>
+            <span class="skill">Git</span>
+          </div>
+        </section>
+
+        <section id="projects">
+          <h2>Projects</h2>
+
+          <div class="project-summary">
+            <p>I have contributed to over 10 repositories, specializing in modern web applications, administrative
+              dashboards, and developer tools.</p>
+          </div>
+
+          <div class="project-item">
+            <div class="project-left">
+              <div class="project-title">CRM-AD-DASH</div>
+              <div class="project-desc">A comprehensive CRM administrative dashboard built for efficient data
+                management.</div>
+              <div class="project-tags">
+                <span class="tag">TypeScript</span><span class="tag">React</span>
+              </div>
+            </div>
+            <a href="https://github.com/Venus2Mice/CRM-AD-DASH" class="project-link">GitHub ↗</a>
+          </div>
+
+          <div class="project-item">
+            <div class="project-left">
+              <div class="project-title">CODE-GRADER-PROJECT</div>
+              <div class="project-desc">Automated code grading system designed for educational purposes.</div>
+              <div class="project-tags">
+                <span class="tag">TypeScript</span><span class="tag">Backend</span>
+              </div>
+            </div>
+            <a href="https://github.com/Venus2Mice/CODE-GRADER-PROJECT" class="project-link">GitHub ↗</a>
+          </div>
+
+          <div class="project-item">
+            <div class="project-left">
+              <div class="project-title">OPENUI</div>
+              <div class="project-desc">Describe UI using your imagination and see it rendered live.</div>
+              <div class="project-tags">
+                <span class="tag">TypeScript</span><span class="tag">UI/UX</span>
+              </div>
+            </div>
+            <a href="https://github.com/Venus2Mice/OPENUI" class="project-link">GitHub ↗</a>
+          </div>
+
+          <div class="project-item">
+            <div class="project-left">
+              <div class="project-title">GIT-VIZ</div>
+              <div class="project-desc">Visualization tool for Git repositories to understand project history.</div>
+              <div class="project-tags">
+                <span class="tag">TypeScript</span><span class="tag">Visualization</span>
+              </div>
+            </div>
+            <a href="https://github.com/Venus2Mice/GIT-VIZ" class="project-link">GitHub ↗</a>
+          </div>
+
+          <div class="project-item">
+            <div class="project-left">
+              <div class="project-title">BOOKSHOP_SPRINGBOOT</div>
+              <div class="project-desc">E-commerce bookshop application built with Spring Boot.</div>
+              <div class="project-tags">
+                <span class="tag">Java</span><span class="tag">Spring Boot</span>
+              </div>
+            </div>
+            <a href="https://github.com/Venus2Mice/BOOKSHOP_SPRINGBOOT" class="project-link">GitHub ↗</a>
+          </div>
+
+        </section>
+
+        <section id="education">
+          <h2>Education</h2>
+          <div class="exp-item">
+            <div class="exp-header">
+              <div class="exp-role">Software Engineering</div>
+              <div class="exp-date">2022 — Present</div>
+            </div>
+            <div class="exp-company">Saigon University (SGU)</div>
+            <div class="exp-desc">Focusing on modern web development, software architecture, and algorithm design. Actively participating in programming competitions and open-source contributions.</div>
+          </div>
+        </section>
+        </div>
+        </div>
+        </main>  </main>
+
+  <footer>
+    <span>2Venus (Venus2Mice)</span>
+    <span>2026</span>
+  </footer>
+
+</body>
+
+</html>
